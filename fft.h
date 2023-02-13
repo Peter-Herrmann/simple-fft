@@ -1,15 +1,15 @@
-/******************************************************************************
+/**************************************************************************************************
  * fft.h : A simple Fast Fourier Transform (FFT) function for use in embedded
- * 		   systems.
+ *         systems.
+ *  
+ *         The function uses two statically sized buffers to shuffle
+ *         data during computation; time domain (input) data should be added
+ *         to the buffer "input_buffer" and results should be read from
+ *         "output_buffer". The buffers will be overwritten during computation.
  *
- * 		   The function uses two statically sized buffers to shuffle
- * 		   data during computation; time domain (input) data should be added
- * 		   to the buffer "input_buffer" and results should be read from
- * 		   "output_buffer". The buffers will be overwritten during computation.
- *
- *  Created on: Nov 16, 2022
- *      Author: Peter Herrmann
- *****************************************************************************/
+ * Created on: Nov 16, 2022
+ *     Author: Peter Herrmann
+ *************************************************************************************************/
 
 #ifndef INC_FFT_H_
 #define INC_FFT_H_

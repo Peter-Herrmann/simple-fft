@@ -1,8 +1,8 @@
 /**************************************************************************************************
  * fft.c : A simple Fast Fourier Transform (FFT) function for use in embedded systems.
  *
- *  Created on: Nov 16, 2022
- *      Author: Peter Herrmann
+ * Created on: Nov 16, 2022
+ *     Author: Peter Herrmann
  *************************************************************************************************/
 
 #include "fft.h"
