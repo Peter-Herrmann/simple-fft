@@ -15,22 +15,19 @@
 #define INC_FFT_H_
 
 #include <complex.h>
-#include "stm32l4xx_hal.h"
+#include <stdint.h>
 
 #define FFT_BUFFER_SIZE 4096
 
-// "Complex" macros do not work with explicit int types (like uint16_t)
 typedef float complex sample_t;
-typedef float freq_t;
+typedef float freq_t; // Typically Hz
 typedef uint16_t dig_t;
-typedef uint16_t count_t;
 
 /* Write inputs to input buffer, read outputs from output_buffer */
 extern sample_t *input_buffer, *output_buffer;
 
 
-/* Computes FFT on input_buffer, overwriting input and output buffers.
- *     returns a pointer to the output_buffer */
+/* Computes FFT on input_buffer, returns a pointer to the output_buffer */
 sample_t *fft();
 
 
@@ -39,7 +36,7 @@ void load_real_inputs(dig_t *raw_inputs);
 
 
 /* Overwrites frequency buffers with scalar magnitudes.
- *     returns the frequency of the largest magnitude bucket */
+ * Uses sample_frequency to return frequency with highest magnitude */
 freq_t find_freq(sample_t *freq_buff, freq_t sample_frequency);
 
 

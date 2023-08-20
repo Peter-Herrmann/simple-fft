@@ -10,6 +10,8 @@
 #define N FFT_BUFFER_SIZE
 #define N_BIT_WIDTH 12
 
+typedef uint16_t count_t;
+
 const float tau = 6.28318530718;
 
 // Buffers used for IO. Used during decimation and butterfly
