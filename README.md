@@ -10,7 +10,7 @@ This library provides an FFT function that uses two statically sized buffers for
 
 - `FFT_BUFFER_SIZE`: Defines the buffer size as 4096.
 - `sample_t`: Typedef for complex numbers of type float by default. Integer types give very poor accuracy, and doubles will double the memory footprint, but both can be used.
-- `freq_t`: Typedef for frequency in Hz, represented as a float. 
+- `freq_t`: Typedef for frequency (typically Hz), represented as a float. 
 - `dig_t`: Typedef for raw digital input data.
 - `count_t`: Typedef for counting, represented as a uint16_t.
 
@@ -26,7 +26,7 @@ This function takes a buffer of scalar digital inputs and loads them into the co
 
 ### `freq_t find_freq(sample_t *freq_buff, freq_t sample_frequency)`
 
-This function takes a complex frequency buffer (the output of an FFT on time domain data), and caluculates the scalar magnitude of each frequency bucket, discarding the phase information. It also takes the sampling frequency of the time domain data, in order to return the frequency value of the highest magnitude bucket in Hz.
+This function takes a complex frequency buffer (the output of an FFT on time domain data), and calculates the scalar magnitude of each frequency bucket, discarding the phase information. It also takes the sampling frequency of the time domain data, in order to return the value (typically frequency in Hz) of the highest magnitude bucket.
 
 ## Usage
 
