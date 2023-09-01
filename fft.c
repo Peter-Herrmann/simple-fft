@@ -149,7 +149,7 @@ freq_t find_freq(sample_t *freq_buff, freq_t sample_frequency)
 	for (int i = 1; i < N / 2; i++)
 	{
 		freq_t mag = (freq_buff[i] = (freq_t)cabs(freq_buff[i]));
-		if (mag >= max)
+		if (mag > max)
 		{
 			max = mag;
 			max_index = i;
