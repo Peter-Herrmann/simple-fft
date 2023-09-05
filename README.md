@@ -1,5 +1,7 @@
 # FFT Library for Embedded Systems
 
+![CI](https://github.com/Peter-Herrmann/simple-fft/actions/workflows/test.yml/badge.svg)
+
 `fft.h` is a Fast Fourier Transform (FFT) library designed for use in embedded systems.
 
 ## Overview
