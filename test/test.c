@@ -17,55 +17,50 @@
 #define PASS                    (0)
 #define FAIL                    (1)
 
-// Magnitude tolerance (unitless) 
+// Magnitude tolerance (unitless)
 #define MAG_TOLERANCE           (5.0)
-#define FREQ_TOLERANCE(rate)    (((double)rate)/((double)FFT_BUFFER_SIZE))
+#define FREQ_TOLERANCE(rate)    (((double)rate) / ((double)FFT_BUFFER_SIZE))
 
-
-
-void generate_1_sine_wave(dig_t *samples, freq_t freq, int sample_rate, int num_samples) 
+void generate_1_sine_wave(dig_t *samples, freq_t freq, int sample_rate, int num_samples)
 {
-    for (int i = 0; i < num_samples; i++) 
+    for(int i = 0; i < num_samples; i++)
     {
         samples[i] = (dig_t)(FREQ_1_MAG * sin( 2 * M_PI * freq * i / sample_rate ) + OFFSET);
     }
 }
 
-
-void generate_2_sine_wave(dig_t *samples, freq_t freq1, freq_t freq2, 
-                          int sample_rate, int num_samples) 
+void generate_2_sine_wave(dig_t *samples, freq_t freq1, freq_t freq2,
+                          int sample_rate, int num_samples)
 {
-    for (int i = 0; i < num_samples; i++) 
+    for(int i = 0; i < num_samples; i++)
     {
         samples[i] = (dig_t)(FREQ_1_MAG * sin( 2 * M_PI * freq1 * i / sample_rate )
-                           + FREQ_2_MAG * sin( 2 * M_PI * freq2 * i / sample_rate )
-                           + OFFSET);
+                             + FREQ_2_MAG * sin( 2 * M_PI * freq2 * i / sample_rate )
+                             + OFFSET);
     }
 }
 
-
-void print_samples(dig_t *samples, int num_samples) 
+void print_samples(dig_t *samples, int num_samples)
 {
     printf("Printing samples:\n");
-    for (int i = 0; i < num_samples; i++) 
+    for(int i = 0; i < num_samples; i++)
     {
         printf("%d, %u\n", i, samples[i]);
     }
     printf("\n");
 }
 
-void print_fft_output(sample_t *output, int num_samples) 
+void print_fft_output(sample_t *output, int num_samples)
 {
     printf("Printing FFT output:\n");
-    for (int i = 0; i < num_samples/2; i++) 
+    for(int i = 0; i < num_samples / 2; i++)
     {
         printf("%d,%f, %f\n", i, creal(output[i]), cimag(output[i]));
     }
     printf("\n");
 }
 
-
-void test_fft() 
+void test_fft()
 {
     dig_t samples[FFT_BUFFER_SIZE];
 
@@ -89,9 +84,7 @@ void test_fft()
     assert((double)output_buffer[f2_bucket] >= FREQ_2_MAG * 1000); // FFT output not to scale
 }
 
-
-
-int main() 
+int main()
 {
     test_fft();
     return 0;

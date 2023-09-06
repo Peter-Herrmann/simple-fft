@@ -5,6 +5,7 @@ TARGET = build/fft_test
 SRC_DIR = src
 TEST_DIR = test
 BUILD_DIR = build
+UNC_CFG = test/uncrustify.cfg
 
 # Source and Object files
 SRC_FILES = $(SRC_DIR)/fft.c
@@ -32,8 +33,12 @@ $(BUILD_DIR)/test.o: $(TEST_DIR)/test.c
 run: $(TARGET)
 	./$(TARGET)
 
+# Lint and show diffs
+uncrustify:
+	find . -type f -name '*.c' -o -name '*.h' | xargs uncrustify -c $(UNC_CFG) --replace --no-backup
+
 # Clean the build directory
 clean:
 	rm -f $(TARGET) $(OBJ_FILES)
 
-.PHONY: all directories run clean
+.PHONY: all directories run lint clean
